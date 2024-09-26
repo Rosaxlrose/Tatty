@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วัดจีนมงคล</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f9a825;
+            --secondary-color: #fff8e1;
+            --text-color: #4a4a4a;
+            --background-color: #fffdf7;
+        }
+        body, html {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        nav {
+            background-color: rgba(255, 255, 255, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav ul li a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 15px 10px;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        section {
+            padding: 40px 0;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h1, h2 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+        .fortune-container {
+            text-align: center;
+            min-height: 200px;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: #f57f17;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+        .shaking {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes draw {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .drawing {
+            animation: draw 1s ease-in-out;
+        }
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-radius: 20px 20px 0 0;
+        }
+        .parallax {
+            background-image: url('https://source.unsplash.com/1600x900/?chinese-temple');
+            min-height: 300px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>วัดจีนมงคล</h1>
+        <p>สัมผัสความงดงามและความศักดิ์สิทธิ์ของวัดจีนโบราณ</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">เกี่ยวกับวัด</a></li>
+            <li><a href="#history">ประวัติ</a></li>
+            <li><a href="#activities">กิจกรรม</a></li>
+            <li><a href="#fortune">เซียมซี</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2>เกี่ยวกับวัด</h2>
+            <p>วัดจีนมงคลเป็นวัดจีนโบราณที่มีความสวยงามและมีความสำคัญทางประวัติศาสตร์ ตั้งอยู่ใจกลางเมือง เป็นที่ประดิษฐานของพระพุทธรูปและเทพเจ้าจีนที่สำคัญหลายองค์</p>
+        </section>
+
+        <div class="parallax"></div>
+
+        <section id="history">
+            <h2>ประวัติ</h2>
+            <p>วัดจีนมงคลก่อตั้งขึ้นเมื่อกว่า 200 ปีที่แล้ว โดยชาวจีนที่อพยพมาตั้งรกรากในประเทศไทย วัดแห่งนี้ได้ผ่านการบูรณะหลายครั้งแต่ยังคงรักษาสถาปัตยกรรมแบบจีนดั้งเดิมไว้อย่างสมบูรณ์</p>
+        </section>
+
+        <section id="activities">
+            <h2>กิจกรรม</h2>
+            <ul>
+                <li>พิธีไหว้พระและขอพร</li>
+                <li>เวียนเทียนในวันสำคัญทางศาสนา</li>
+                <li>เทศกาลตรุษจีนประจำปี</li>
+                <li>กิจกรรมทำบุญตักบาตรทุกวันพระ</li>
+            </ul>
+        </section>
+
+        <section id="fortune">
+            <h2>เซียมซี</h2>
+            <p>ลองเสี่ยงเซียมซีเพื่อทำนายโชคชะตาของคุณ</p>
+            <div class="fortune-container">
+                <button id="fortuneButton">สุ่มเซียมซี</button>
+                <div id="fortuneResult"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 วัดจีนมงคล. สงวนลิขสิทธิ์.</p>
+    </footer>
+
+    <script>
+        const fortunes = [
+            "โชคดีมาก",
+            "โชคดี",
+            "ปานกลาง",
+            "โชคไม่ค่อยดี",
+            "โชคไม่ดี"
+        ];
+
+        const fortuneButton = document.getElementById('fortuneButton');
+        const fortuneResult = document.getElementById('fortuneResult');
+
+        fortuneButton.addEventListener('click', () => {
+            fortuneButton.style.display = 'none';
+            fortuneResult.innerHTML = '<span style="font-size: 50px;">🥢</span>';
+            fortuneResult.classList.add('shaking');
+
+            setTimeout(() => {
+                fortuneResult.classList.remove('shaking');
+                fortuneResult.classList.add('drawing');
+
+                setTimeout(() => {
+                    fortuneResult.classList.remove('drawing');
+                    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+                    fortuneResult.innerHTML = `
+                        <h3>ผลเซียมซีของคุณ:</h3>
+                        <p style="font-size: 24px;">${randomFortune}</p>
+                        <button onclick="location.reload()">ลองอีกครั้ง</button>
+                    `;
+                }, 1000);
+            }, 2000);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in sections on scroll
+        const sections = document.querySelectorAll('section');
+        const fadeInSection = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+        const sectionObserver = new IntersectionObserver(fadeInSection, {
+            root: null,
+            threshold: 0.1,
+        });
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
+</body>
+</html>
